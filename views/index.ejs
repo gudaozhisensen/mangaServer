@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- <link rel='stylesheet' href='/public/lib/layui/css/layui.css' /> -->
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/weadmin.css">
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <button type="button" class="layui-btn" id="test1">
+      <i class="layui-icon">&#xe67c;</i>上传图片
+    </button>
+    
+    <script type="text/javascript">
+      layui.use('upload', function(){
+      var upload = layui.upload;
+   
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#test1' //绑定元素
+    ,url: '/api/images/imagesUpload', //上传接口
+    field:"test1"
+    ,done: function(res){
+      console.log("success");
+      console.log(res);
+    }
+    ,error: function(){
+      console.log("fail");
+    }
+  });
+});
+    </script>
+  </body>
+</html>
